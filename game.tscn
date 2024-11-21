@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbrha4q4l1f0p"]
+
+[ext_resource type="PackedScene" uid="uid://djrasrgdj5ydy" path="res://flipper.tscn" id="1_oyngu"]
+[ext_resource type="Script" path="res://ball.gd" id="2_sru0l"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vxo2t"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ux70h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8irq7"]
+size = Vector2(165, 23.7004)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(203, 289)
+physics_material_override = SubResource("PhysicsMaterial_vxo2t")
+gravity_scale = 0.58
+continuous_cd = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("2_sru0l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_ux70h")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(12, 386)
+scale = Vector2(1, 38.32)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(148, -11.2474)
+rotation = 1.5708
+scale = Vector2(0.026096, 38.32)
+shape = SubResource("RectangleShape2D_8irq7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(229, 11.9781)
+rotation = 1.5708
+scale = Vector2(0.026096, 38.32)
+shape = SubResource("RectangleShape2D_8irq7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(435, -0.832461)
+shape = SubResource("RectangleShape2D_8irq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-28, 1.01775)
+shape = SubResource("RectangleShape2D_8irq7")
+
+[node name="Flipper" parent="." instance=ExtResource("1_oyngu")]
+position = Vector2(293, 677)
+rotation = 3.14159
+
+[node name="Paddle" parent="Flipper" index="2"]
+is_left = false
+
+[node name="Flipper2" parent="." instance=ExtResource("1_oyngu")]
+position = Vector2(134, 677)
+
+[editable path="Flipper"]
+[editable path="Flipper2"]
